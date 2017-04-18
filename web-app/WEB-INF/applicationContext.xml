@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="grailsApplication" class="org.codehaus.groovy.grails.commons.GrailsApplicationFactoryBean">
+		<description>Grails application factory bean</description>
+		<property name="grailsDescriptor" value="/WEB-INF/grails.xml" />
+	</bean>
+
+	<bean id="pluginManager" class="org.codehaus.groovy.grails.plugins.GrailsPluginManagerFactoryBean">
+		<description>A bean that manages Grails plugins</description>
+		<property name="grailsDescriptor" value="/WEB-INF/grails.xml" />
+		<property name="application" ref="grailsApplication" />
+	</bean>
+
+	<bean id="grailsConfigurator" class="org.codehaus.groovy.grails.commons.spring.GrailsRuntimeConfigurator">
+		<constructor-arg>
+			<ref bean="grailsApplication" />
+		</constructor-arg>
+		<property name="pluginManager" ref="pluginManager" />
+	</bean>
+
+	<bean id="characterEncodingFilter" class="org.springframework.web.filter.CharacterEncodingFilter">
+		<property name="encoding">
+			<value>utf-8</value>
+		</property>
+	</bean>
+
+	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean" />
+
+	<bean id="pricesService" class="service.gpw.price.WyborczaPriceService"/>
+	<bean id="filter" class="model.CalculationsFilter"/>
+	<bean id="operationService" class="service.gpw.OperationService"/>
+	<bean id="calculationService" class="service.gpw.CalculationService"/>
+	<bean id="dataService" class="service.gpw.data.FileDataService">
+		<constructor-arg>
+			<value>home/jasm/gpw</value>
+		</constructor-arg>
+	</bean>
+	<bean id="registerService" class="service.gpw.RegisterService">
+		<constructor-arg>
+			<ref bean="calculationService"/>
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="operationService"/>
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="dataService"/>
+		</constructor-arg>
+	</bean>
+    <bean id="wallet" class="model.gpw.Wallet">
+        <constructor-arg>
+            <ref bean="registerService"/>
+        </constructor-arg>
+    </bean>
+
+</beans>
