@@ -3,7 +3,7 @@ package model.gpw;
 import java.time.LocalDate;
 
 /**
- * Created by Q1O1 on 28-02-2017.
+ * Created by apollo14@o2.pl on 28-02-2017.
  */
 public class Price {
     // real price = value / 100

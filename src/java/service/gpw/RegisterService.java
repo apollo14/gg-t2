@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Q1O1 on 21-02-2017.
+ * Created by apollo14@o2.pl on 21-02-2017.
  */
 public class RegisterService {
     private CalculationService calculationService;

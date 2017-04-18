@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Created by Q1O1 on 27-02-2017.
+ * Created by apollo14@o2.pl on 27-02-2017.
  */
 public enum EBroker {
     MBANK;

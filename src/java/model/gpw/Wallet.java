@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Q1O1 on 21-02-2017.
+ * Created by apollo14@o2.pl on 21-02-2017.
  */
 public class Wallet {
     private Map<String, Register> registers;

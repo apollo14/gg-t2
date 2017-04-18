@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * Created by Q1O1 on 24-02-2017.
+ * Created by apollo14@o2.pl on 24-02-2017.
  */
 public abstract class ADataService implements IDataService {
 
